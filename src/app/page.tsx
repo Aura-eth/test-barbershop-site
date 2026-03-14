@@ -1,119 +1,290 @@
+"use client";
+
+import { FadeInUp } from "@/components/fade-in-up";
+import { ShineBorder } from "@/components/shine-border";
+import { AnimatedGrid } from "@/components/animated-grid";
+import { cn } from "@/lib/utils";
+
 export default function HomePage() {
+  const services = [
+    {
+      name: "Classic Cuts",
+      price: "$30",
+      description: "Timeless styles executed with precision and attention to detail"
+    },
+    {
+      name: "Fades",
+      price: "$35",
+      description: "Clean, sharp fades that complement your personal style"
+    },
+    {
+      name: "Hot Towel Shave",
+      price: "$25",
+      description: "Traditional hot towel shave for the ultimate grooming experience"
+    },
+    {
+      name: "Beard Trim",
+      price: "$15",
+      description: "Professional beard shaping and trimming to perfect your look"
+    }
+  ];
+
+  const experienceSteps = [
+    {
+      number: "01",
+      title: "Consultation",
+      description: "We start with understanding your style, lifestyle, and preferences to craft the perfect cut."
+    },
+    {
+      number: "02",
+      title: "Precision Cutting",
+      description: "Using professional techniques honed over 5 years, we execute your cut with meticulous attention to detail."
+    },
+    {
+      number: "03",
+      title: "Styling & Finish",
+      description: "The final touches that make all the difference - styling and grooming for that perfect finish."
+    }
+  ];
+
+  const testimonials = [
+    {
+      stars: 5,
+      text: "Mike is incredibly skilled and professional. Best cut I've had in years. The attention to detail is unmatched.",
+      author: "James Rodriguez"
+    },
+    {
+      stars: 5,
+      text: "Consistent quality every single time. The atmosphere is great and Mike really knows his craft. Highly recommended.",
+      author: "David Chen"
+    },
+    {
+      stars: 5,
+      text: "Been coming here for 2 years now. Never disappointed. Clean, professional, and always exactly what I ask for.",
+      author: "Michael Thompson"
+    }
+  ];
+
   return (
-    <main>
-      <section id="home" className="min-h-screen bg-gradient-to-br from-background via-primary to-secondary flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-text to-accent bg-clip-text text-transparent">Premium Cuts for the Modern Gentleman</h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">At Test Barbershop, we combine traditional barbering techniques with contemporary style to deliver the perfect cut every time.</p>
-            <a href="#contact" className="inline-block bg-accent text-background px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent/90 transition-all duration-300 transform hover:scale-105">Book Your Appointment</a>
+    <>
+      {/* Hero Section */}
+      <section className="hero">
+        <div 
+          className="hero-bg" 
+          style={{
+            background: "linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%)"
+          }}
+        ></div>
+        <div className="hero-content">
+          <FadeInUp delay={0}>
+            <p className="hero-subtitle">Scottsdale's Premier Barbershop</p>
+            <h1 className="hero-title">Premium Cuts for the Modern Gentleman</h1>
+            <p className="hero-desc">
+              Experience exceptional barbering at Test Barbershop in Scottsdale. 5 years of expertise, over 2000 satisfied clients, and a 5-star Google rating.
+            </p>
+            <div className="hero-buttons">
+              <a href="#contact" className="btn-primary">Book Your Appointment</a>
+              <a href="#services" className="btn-outline">View Services</a>
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="stats-bar">
+        <div className="stats-inner">
+          <FadeInUp delay={0}>
+            <div className="stat-item">
+              <div className="stat-number">5</div>
+              <div className="stat-label">Years Experience</div>
+            </div>
+          </FadeInUp>
+          <FadeInUp delay={150}>
+            <div className="stat-item">
+              <div className="stat-number">2000+</div>
+              <div className="stat-label">Satisfied Clients</div>
+            </div>
+          </FadeInUp>
+          <FadeInUp delay={300}>
+            <div className="stat-item">
+              <div className="stat-number">5</div>
+              <div className="stat-label">Star Rating</div>
+            </div>
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="section">
+        <div className="section-inner">
+          <FadeInUp delay={0}>
+            <div className="section-header">
+              <p className="section-label">Our Services</p>
+              <h2 className="section-title">Expert Barbering Services</h2>
+              <p className="section-desc">
+                From classic cuts to modern fades, we deliver precision styling tailored to your lifestyle
+              </p>
+            </div>
+          </FadeInUp>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <FadeInUp key={service.name} delay={index * 150}>
+                <div className="service-card">
+                  <h3>{service.name}</h3>
+                  <div className="price">{service.price}</div>
+                  <p>{service.description}</p>
+                </div>
+              </FadeInUp>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl md:text-6xl font-bold mb-6 text-accent">Master Craftsmanship in Every Cut</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">From classic cuts to modern fades, we deliver precision styling tailored to your unique look.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-secondary p-8 rounded-lg hover:bg-secondary/80 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-4">Classic Cuts</h3>
-              <p className="text-gray-300 mb-4">Timeless styles executed with precision and attention to detail</p>
-              <p className="text-3xl font-bold text-accent">$30</p>
+      {/* Experience Section */}
+      <section id="about" className="section section-alt" style={{ position: "relative" }}>
+        <AnimatedGrid 
+          numSquares={100}
+          maxOpacity={0.3}
+          duration={3000}
+          color="#d4af37"
+          className="absolute inset-0 z-0"
+        />
+        <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
+          <FadeInUp delay={0}>
+            <div className="section-header">
+              <p className="section-label">The Experience</p>
+              <h2 className="section-title">Craftsmanship in Every Cut</h2>
+              <p className="section-desc">
+                Mike brings 5 years of dedicated barbering experience to every cut. Having served over 2000 clients, Test Barbershop has earned its reputation as Scottsdale's premier destination for men's grooming. Our 5-star Google rating reflects our commitment to precision, style, and exceptional service.
+              </p>
             </div>
-            <div className="bg-secondary p-8 rounded-lg hover:bg-secondary/80 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-4">Fades</h3>
-              <p className="text-gray-300 mb-4">Contemporary fades that blend seamlessly for a sharp, clean look</p>
-              <p className="text-3xl font-bold text-accent">$35</p>
-            </div>
-            <div className="bg-secondary p-8 rounded-lg hover:bg-secondary/80 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-4">Hot Towel Shave</h3>
-              <p className="text-gray-300 mb-4">Traditional hot towel treatment for the ultimate shaving experience</p>
-              <p className="text-3xl font-bold text-accent">$25</p>
-            </div>
-            <div className="bg-secondary p-8 rounded-lg hover:bg-secondary/80 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-4">Beard Trim</h3>
-              <p className="text-gray-300 mb-4">Expert sculpting and grooming to keep your beard looking its best</p>
-              <p className="text-3xl font-bold text-accent">$15</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-accent">Craftsmanship Meets Style</h2>
-              <p className="text-lg text-gray-300 leading-relaxed">Welcome to Test Barbershop, where craftsmanship meets style. Under Mike's expert guidance, we've created Scottsdale's premier destination for discerning gentlemen who demand excellence. Our commitment to precision, attention to detail, and personalized service ensures you leave looking and feeling your absolute best.</p>
-            </div>
-            <div className="bg-gradient-to-r from-primary to-secondary p-8 rounded-lg">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-4">Meet Mike</h3>
-              <p className="text-gray-300">Master barber with over a decade of experience, Mike brings passion and precision to every cut. His dedication to the craft and commitment to customer satisfaction has made Test Barbershop the go-to destination for Scottsdale's most discerning clients.</p>
-            </div>
+          </FadeInUp>
+          <div className="experience-grid">
+            {experienceSteps.map((step, index) => (
+              <FadeInUp key={step.number} delay={index * 150}>
+                <div className="experience-step">
+                  <div className="experience-number">{step.number}</div>
+                  <h3 className="experience-title">{step.title}</h3>
+                  <p className="experience-desc">{step.description}</p>
+                </div>
+              </FadeInUp>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="font-heading text-4xl font-bold mb-8 text-accent">Hours of Operation</h2>
-            <div className="bg-secondary p-8 rounded-lg max-w-md mx-auto">
-              <div className="space-y-3">
-                <div className="flex justify-between"><span>Monday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Tuesday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Wednesday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Thursday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Friday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Saturday</span><span className="text-accent">10am - 7pm</span></div>
-                <div className="flex justify-between"><span>Sunday</span><span className="text-accent">Closed</span></div>
+      {/* Testimonials Section */}
+      <section id="testimonials" className="section">
+        <div className="section-inner">
+          <FadeInUp delay={0}>
+            <div className="section-header">
+              <p className="section-label">Client Reviews</p>
+              <h2 className="section-title">What Our Clients Say</h2>
+              <p className="section-desc">
+                Don't just take our word for it - hear from our satisfied clients who trust us with their style
+              </p>
+            </div>
+          </FadeInUp>
+          <div className="testimonials-grid">
+            {testimonials.map((testimonial, index) => (
+              <FadeInUp key={index} delay={index * 150}>
+                <div className="testimonial-card">
+                  <div className="testimonial-stars">
+                    {[...Array(testimonial.stars)].map((_, i) => (
+                      <span key={i}>★</span>
+                    ))}
+                  </div>
+                  <blockquote className="testimonial-text">
+                    {testimonial.text}
+                  </blockquote>
+                  <cite className="testimonial-author">— {testimonial.author}</cite>
+                </div>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="section-inner">
+          <FadeInUp delay={0}>
+            <ShineBorder
+              borderRadius={16}
+              borderWidth={2}
+              duration={3000}
+              color={["#1a1a1a", "#d4af37"]}
+              className="p-12 text-center"
+            >
+              <h2 className="text-4xl font-bold mb-6 text-white">Ready for Your Best Cut Yet?</h2>
+              <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                Experience the difference that 5 years of expertise and over 2000 satisfied clients makes. Book your appointment today.
+              </p>
+              <div className="hero-buttons">
+                <a href="#contact" className="btn-primary">Book Your Appointment</a>
+                <a href="tel:+1234567890" className="btn-outline">Call Now</a>
               </div>
-            </div>
-          </div>
+            </ShineBorder>
+          </FadeInUp>
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl md:text-6xl font-bold mb-6 text-accent">Visit Test Barbershop</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">Experience the difference at Scottsdale's premier barbershop</p>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <div className="bg-primary p-8 rounded-lg mb-8">
-                <h3 className="font-heading text-2xl font-bold text-accent mb-4">Location</h3>
-                <p className="text-gray-300 mb-4">Conveniently located in the heart of Scottsdale, Test Barbershop is your destination for premium grooming services.</p>
-                <p className="text-lg">123 Main St<br/>Scottsdale, AZ 85260</p>
-              </div>
-              <div className="bg-primary p-8 rounded-lg">
-                <h3 className="font-heading text-2xl font-bold text-accent mb-4">Ready to Book?</h3>
-                <p className="text-gray-300 mb-4">Ready to experience the Test Barbershop difference? Contact us today to schedule your appointment with Mike and discover why we're Scottsdale's choice for premium men's grooming.</p>
-              </div>
+      {/* Contact Section */}
+      <section id="contact" className="section">
+        <div className="section-inner">
+          <FadeInUp delay={0}>
+            <div className="section-header">
+              <p className="section-label">Get In Touch</p>
+              <h2 className="section-title">Visit Test Barbershop</h2>
+              <p className="section-desc">
+                Located in the heart of Scottsdale, we're ready to deliver your best cut yet
+              </p>
             </div>
-            <div className="bg-secondary p-8 rounded-lg">
-              <h3 className="font-heading text-2xl font-bold text-accent mb-6">Book Your Appointment</h3>
-              <form className="space-y-6">
-                <input type="text" placeholder="Your Name" className="w-full p-4 bg-primary border border-gray-600 rounded-lg focus:border-accent focus:outline-none transition-colors duration-300" />
-                <input type="email" placeholder="Email Address" className="w-full p-4 bg-primary border border-gray-600 rounded-lg focus:border-accent focus:outline-none transition-colors duration-300" />
-                <input type="tel" placeholder="Phone Number" className="w-full p-4 bg-primary border border-gray-600 rounded-lg focus:border-accent focus:outline-none transition-colors duration-300" />
-                <select className="w-full p-4 bg-primary border border-gray-600 rounded-lg focus:border-accent focus:outline-none transition-colors duration-300">
-                  <option>Select Service</option>
-                  <option>Classic Cut - $30</option>
-                  <option>Fade - $35</option>
-                  <option>Hot Towel Shave - $25</option>
-                  <option>Beard Trim - $15</option>
-                </select>
-                <textarea placeholder="Preferred date/time or special requests" rows={4} className="w-full p-4 bg-primary border border-gray-600 rounded-lg focus:border-accent focus:outline-none transition-colors duration-300 resize-none"></textarea>
-                <button type="submit" className="w-full bg-accent text-background py-4 rounded-lg font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105">Send Message</button>
+          </FadeInUp>
+          <div className="contact-section">
+            <FadeInUp delay={150}>
+              <div className="contact-info">
+                <div className="contact-item">
+                  <div className="contact-label">Address</div>
+                  <p>123 Main St<br />Scottsdale AZ 85260</p>
+                </div>
+                <div className="contact-item">
+                  <div className="contact-label">Hours</div>
+                  <p>
+                    Monday - Saturday: 10am-7pm<br />
+                    Sunday: Closed
+                  </p>
+                </div>
+                <div className="contact-item">
+                  <div className="contact-label">Contact</div>
+                  <p>
+                    Ready for your next cut? Contact us to schedule your appointment and experience the difference that 5 years of expertise makes.
+                  </p>
+                </div>
+              </div>
+            </FadeInUp>
+            <FadeInUp delay={300}>
+              <form className="contact-form">
+                <div className="form-group">
+                  <input type="text" placeholder="Your Name" required />
+                </div>
+                <div className="form-group">
+                  <input type="email" placeholder="Your Email" required />
+                </div>
+                <div className="form-group">
+                  <input type="tel" placeholder="Your Phone" required />
+                </div>
+                <div className="form-group">
+                  <textarea placeholder="Message (optional)" rows={4}></textarea>
+                </div>
+                <button type="submit" className="btn-primary w-full">
+                  Send Message
+                </button>
               </form>
-            </div>
+            </FadeInUp>
           </div>
         </div>
       </section>
-    </main>
-  )
+    </>
+  );
 }
